@@ -1,0 +1,20 @@
+{
+  "totalCards": 78,
+  "arcana": {
+    "major": 22,
+    "minor": 56
+  },
+  "suits": {
+    "trumps": 22,
+    "cups": 14,
+    "swords": 14,
+    "wands": 14,
+    "pentacles": 14
+  },
+  "imagesDownloaded": 79,
+  "savedDataPath": "data/cards.json",
+  "imagesDirectories": [
+    "cards/",
+    "public/cards/"
+  ]
+}
