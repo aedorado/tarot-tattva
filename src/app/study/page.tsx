@@ -80,7 +80,7 @@ export default function StudyPage() {
           <select
             value={deckType}
             onChange={(e) => setDeckType(e.target.value as any)}
-            className="px-3 py-1.5 rounded-lg bg-parchment-surface border border-parchment-border text-xs sm:text-sm text-parchment-text focus:outline-none focus:border-parchment-brass"
+            className="px-3 py-1.5 rounded-lg bg-white border border-parchment-border text-xs sm:text-sm text-parchment-text focus:outline-none focus:border-parchment-brass shadow-soft"
           >
             <option value="major">Major Arcana (22)</option>
             <option value="all">Full Deck (78)</option>
@@ -93,7 +93,7 @@ export default function StudyPage() {
           <button
             onClick={handleShuffle}
             title="Reshuffle deck"
-            className="p-2 rounded-lg bg-parchment-surface border border-parchment-border hover:border-parchment-brass text-parchment-muted hover:text-parchment-text transition-colors"
+            className="p-2 rounded-lg bg-white border border-parchment-border hover:border-parchment-brass text-parchment-muted hover:text-parchment-text transition-colors shadow-soft"
           >
             <RefreshCcw className="w-3.5 h-3.5" />
           </button>
@@ -101,9 +101,9 @@ export default function StudyPage() {
       </div>
 
       {/* Progress */}
-      <div className="flex items-center justify-between text-xs text-parchment-dim bg-parchment-surface px-4 py-2 rounded-lg border border-parchment-border">
+      <div className="flex items-center justify-between text-xs text-parchment-dim bg-white px-4 py-2 rounded-lg border border-parchment-border shadow-soft">
         <span>Card {currentIndex + 1} of {deck.length}</span>
-        <div className="flex-1 mx-4 bg-parchment-base rounded-full h-1 overflow-hidden">
+        <div className="flex-1 mx-4 bg-parchment-bg rounded-full h-1.5 overflow-hidden">
           <div
             className="bg-parchment-brass h-full transition-all duration-300"
             style={{ width: `${((currentIndex + 1) / deck.length) * 100}%` }}
@@ -121,12 +121,12 @@ export default function StudyPage() {
           }`}
         >
           {/* Front: Card Artwork */}
-          <div className="absolute inset-0 backface-hidden rounded-2xl bg-parchment-surface border border-parchment-border shadow-card p-6 flex flex-col items-center justify-between">
+          <div className="absolute inset-0 backface-hidden rounded-2xl bg-white border border-parchment-border shadow-card p-6 flex flex-col items-center justify-between">
             <span className="text-[10px] uppercase tracking-widest text-parchment-dim">
               Tap card to flip &amp; reveal answer
             </span>
 
-            <div className="relative w-44 h-72 sm:w-52 sm:h-88 rounded-xl overflow-hidden shadow-card border border-parchment-border my-auto">
+            <div className="relative w-44 h-72 sm:w-52 sm:h-80 rounded-xl overflow-hidden shadow-card border border-parchment-border my-auto bg-[#f0ece3]">
               <Image
                 src={`/cards/${currentCard.img}`}
                 alt={currentCard.name}
@@ -143,7 +143,7 @@ export default function StudyPage() {
           </div>
 
           {/* Back: Details */}
-          <div className="absolute inset-0 backface-hidden rotate-y-180 rounded-2xl bg-parchment-surface border border-parchment-border shadow-card p-6 flex flex-col justify-between overflow-y-auto">
+          <div className="absolute inset-0 backface-hidden rotate-y-180 rounded-2xl bg-white border border-parchment-border shadow-card p-6 flex flex-col justify-between overflow-y-auto">
             <div className="space-y-4">
               <div className="text-center border-b border-parchment-border pb-3">
                 <span className="text-[10px] text-parchment-brass tracking-widest uppercase">
@@ -161,7 +161,7 @@ export default function StudyPage() {
                 </span>
                 <div className="flex flex-wrap gap-1.5">
                   {currentCard.keywords.map((kw, i) => (
-                    <span key={i} className="px-2.5 py-0.5 text-xs rounded bg-parchment-base text-parchment-brass border border-parchment-border">
+                    <span key={i} className="px-2.5 py-0.5 text-xs rounded bg-parchment-bg text-parchment-brass border border-parchment-border">
                       {kw}
                     </span>
                   ))}
@@ -170,7 +170,7 @@ export default function StudyPage() {
 
               {/* Light & Shadow */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
-                <div className="p-3 rounded-xl bg-parchment-base border border-parchment-border">
+                <div className="p-3 rounded-xl bg-parchment-bg border border-parchment-border">
                   <div className="flex items-center gap-1 font-medium text-parchment-brass mb-1">
                     <Sun className="w-3.5 h-3.5" /> Light (Upright)
                   </div>
@@ -181,7 +181,7 @@ export default function StudyPage() {
                   </ul>
                 </div>
 
-                <div className="p-3 rounded-xl bg-parchment-base border border-parchment-border">
+                <div className="p-3 rounded-xl bg-parchment-bg border border-parchment-border">
                   <div className="flex items-center gap-1 font-medium text-parchment-dim mb-1">
                     <Moon className="w-3.5 h-3.5" /> Shadow (Reversed)
                   </div>
@@ -195,7 +195,7 @@ export default function StudyPage() {
 
               {/* Course Notes */}
               {noteForCurrent ? (
-                <div className="p-3 rounded-xl bg-parchment-base border border-parchment-brass/30">
+                <div className="p-3 rounded-xl bg-parchment-brassTint border border-parchment-brass/20">
                   <span className="text-[10px] font-semibold uppercase tracking-wider text-parchment-brass block mb-1">
                     Your Course Notes
                   </span>
@@ -220,7 +220,7 @@ export default function StudyPage() {
         <button
           onClick={handlePrev}
           disabled={currentIndex === 0}
-          className="px-3.5 py-2 rounded-lg bg-parchment-surface hover:bg-parchment-elevated disabled:opacity-30 disabled:cursor-not-allowed border border-parchment-border text-xs sm:text-sm font-medium flex items-center gap-1.5 text-parchment-muted hover:text-parchment-text transition-colors"
+          className="px-3.5 py-2 rounded-lg bg-white hover:bg-parchment-elevated disabled:opacity-30 disabled:cursor-not-allowed border border-parchment-border text-xs sm:text-sm font-medium flex items-center gap-1.5 text-parchment-muted hover:text-parchment-text transition-colors shadow-soft"
         >
           <ArrowLeft className="w-3.5 h-3.5" /> Previous
         </button>
@@ -228,13 +228,13 @@ export default function StudyPage() {
         <div className="flex items-center gap-2">
           <button
             onClick={() => handleNext(false)}
-            className="px-3.5 py-2 rounded-lg bg-parchment-surface hover:bg-parchment-elevated border border-parchment-border text-xs sm:text-sm font-medium text-parchment-muted hover:text-parchment-text transition-colors"
+            className="px-3.5 py-2 rounded-lg bg-white hover:bg-parchment-elevated border border-parchment-border text-xs sm:text-sm font-medium text-parchment-muted hover:text-parchment-text transition-colors shadow-soft"
           >
             Review Again
           </button>
           <button
             onClick={() => handleNext(true)}
-            className="px-4 py-2 rounded-lg bg-parchment-brass hover:bg-parchment-brassHover text-parchment-base font-semibold text-xs sm:text-sm flex items-center gap-1.5 shadow-subtle transition-colors"
+            className="px-4 py-2 rounded-lg bg-parchment-brass hover:bg-parchment-brassHover text-white font-semibold text-xs sm:text-sm flex items-center gap-1.5 shadow-soft transition-colors"
           >
             <CheckCircle className="w-3.5 h-3.5" />
             I Know This!
@@ -243,7 +243,7 @@ export default function StudyPage() {
 
         <button
           onClick={() => handleNext(false)}
-          className="px-3.5 py-2 rounded-lg bg-parchment-surface hover:bg-parchment-elevated border border-parchment-border text-xs sm:text-sm font-medium flex items-center gap-1.5 text-parchment-muted hover:text-parchment-text transition-colors"
+          className="px-3.5 py-2 rounded-lg bg-white hover:bg-parchment-elevated border border-parchment-border text-xs sm:text-sm font-medium flex items-center gap-1.5 text-parchment-muted hover:text-parchment-text transition-colors shadow-soft"
         >
           Next <ArrowRight className="w-3.5 h-3.5" />
         </button>

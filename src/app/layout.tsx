@@ -13,13 +13,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className="min-h-screen flex flex-col bg-warm-ambient text-parchment-text antialiased selection:bg-parchment-brass selection:text-parchment-base">
+    <html lang="en">
+      <body className="min-h-screen flex flex-col bg-parchment-bg text-parchment-text antialiased selection:bg-parchment-brassTint selection:text-parchment-brass">
         <Navbar />
         <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
           {children}
         </main>
-        <footer className="border-t border-parchment-border/60 py-6 text-center text-xs text-parchment-dim">
+        <footer className="border-t border-parchment-border py-6 text-center text-xs text-parchment-dim">
           <p>Tarot Tattva • Intuitive Tarot Learning &amp; Course Companion</p>
         </footer>
       </body>

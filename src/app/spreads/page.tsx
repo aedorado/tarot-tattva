@@ -142,14 +142,14 @@ export default function SpreadsPage() {
             type="checkbox"
             checked={allowReversals}
             onChange={(e) => setAllowReversals(e.target.checked)}
-            className="rounded bg-parchment-surface border-parchment-border text-parchment-brass focus:ring-0"
+            className="rounded bg-white border-parchment-border text-parchment-brass focus:ring-0"
           />
           Allow Reversed Cards
         </label>
       </div>
 
       {/* Setup */}
-      <div className="p-4 sm:p-5 rounded-xl bg-parchment-surface border border-parchment-border space-y-4">
+      <div className="p-4 sm:p-5 rounded-xl bg-white border border-parchment-border shadow-card space-y-4">
         <div className="flex flex-wrap gap-2">
           {SPREADS.map((s) => (
             <button
@@ -160,8 +160,8 @@ export default function SpreadsPage() {
               }}
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                 selectedSpreadId === s.id
-                  ? 'bg-parchment-brass text-parchment-base font-semibold shadow-subtle'
-                  : 'bg-parchment-base text-parchment-muted hover:text-parchment-text border border-parchment-border'
+                  ? 'bg-parchment-brass text-white font-semibold shadow-soft'
+                  : 'bg-parchment-bg text-parchment-muted hover:text-parchment-text border border-parchment-border'
               }`}
             >
               {s.name}
@@ -175,12 +175,12 @@ export default function SpreadsPage() {
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             placeholder="Reading focus or question (e.g. Guidance for upcoming decision...)"
-            className="flex-1 px-3.5 py-2 rounded-lg bg-parchment-base border border-parchment-border text-xs sm:text-sm text-parchment-text placeholder-parchment-dim focus:outline-none focus:border-parchment-brass"
+            className="flex-1 px-3.5 py-2 rounded-lg bg-parchment-bg border border-parchment-border text-xs sm:text-sm text-parchment-text placeholder-parchment-dim focus:outline-none focus:border-parchment-brass"
           />
 
           <button
             onClick={handleShuffleAndDeal}
-            className="px-5 py-2 rounded-lg bg-parchment-brass hover:bg-parchment-brassHover text-parchment-base font-semibold text-xs sm:text-sm shadow-subtle flex items-center justify-center gap-1.5 transition-colors"
+            className="px-5 py-2 rounded-lg bg-parchment-brass hover:bg-parchment-brassHover text-white font-semibold text-xs sm:text-sm shadow-soft flex items-center justify-center gap-1.5 transition-colors"
           >
             <Shuffle className="w-3.5 h-3.5" />
             Shuffle &amp; Deal
@@ -222,7 +222,7 @@ export default function SpreadsPage() {
                   {/* 3D Flip Card */}
                   <div
                     onClick={() => flipCard(index)}
-                    className="perspective-1000 w-40 h-68 sm:w-44 sm:h-76 cursor-pointer"
+                    className="perspective-1000 w-[180px] h-[310px] sm:w-[200px] sm:h-[340px] cursor-pointer mx-auto"
                   >
                     <div
                       className={`relative w-full h-full rounded-xl transition-transform duration-700 transform-style-3d ${
@@ -230,23 +230,23 @@ export default function SpreadsPage() {
                       }`}
                     >
                       {/* Back */}
-                      <div className="absolute inset-0 backface-hidden rounded-xl overflow-hidden shadow-card border border-parchment-border bg-parchment-base">
+                      <div className="absolute inset-0 backface-hidden rounded-xl overflow-hidden shadow-card border border-parchment-border bg-[#f0ece3]">
                         <Image
                           src="/cards/back.jpg"
                           alt="Card Back"
                           fill
                           className="object-cover"
-                          sizes="180px"
+                          sizes="200px"
                         />
-                        <div className="absolute inset-0 bg-black/15 hover:bg-transparent transition-colors flex items-center justify-center">
-                          <span className="text-[10px] text-parchment-text bg-parchment-base/80 px-2 py-0.5 rounded border border-parchment-border/40">
-                            Flip
+                        <div className="absolute inset-0 bg-black/10 hover:bg-transparent transition-colors flex items-center justify-center">
+                          <span className="text-[10px] text-parchment-text bg-white/95 px-2.5 py-1 rounded-full border border-parchment-border shadow-xs">
+                            Click to flip
                           </span>
                         </div>
                       </div>
 
                       {/* Front */}
-                      <div className="absolute inset-0 backface-hidden rotate-y-180 rounded-xl overflow-hidden shadow-card border border-parchment-border bg-parchment-base">
+                      <div className="absolute inset-0 backface-hidden rotate-y-180 rounded-xl overflow-hidden shadow-card border border-parchment-border bg-white">
                         <Image
                           src={`/cards/${drawn.card.img}`}
                           alt={drawn.card.name}
@@ -254,10 +254,10 @@ export default function SpreadsPage() {
                           className={`object-cover transition-transform ${
                             drawn.isReversed ? 'rotate-180' : ''
                           }`}
-                          sizes="180px"
+                          sizes="200px"
                         />
-                        <div className="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center text-[10px] bg-parchment-base/90 px-2 py-0.5 rounded border border-parchment-border/40 text-parchment-text">
-                          <span className="truncate">{drawn.card.name}</span>
+                        <div className="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center text-[10px] bg-white/95 px-2 py-0.5 rounded border border-parchment-border/60 text-parchment-text shadow-xs">
+                          <span className="truncate font-serif">{drawn.card.name}</span>
                           <span className={drawn.isReversed ? 'text-element-fire font-medium' : 'text-parchment-brass font-medium'}>
                             {drawn.isReversed ? 'Rev' : 'Upr'}
                           </span>
@@ -268,7 +268,7 @@ export default function SpreadsPage() {
 
                   {/* Meaning preview */}
                   {drawn.isFlipped && (
-                    <div className="w-full text-[11px] bg-parchment-surface p-2.5 rounded-lg border border-parchment-border text-parchment-muted space-y-1">
+                    <div className="w-full text-[11px] bg-white p-2.5 rounded-lg border border-parchment-border text-parchment-muted space-y-1 shadow-soft">
                       <div className="font-serif font-medium text-parchment-brass">
                         {drawn.isReversed ? 'Reversed (Shadow):' : 'Upright (Light):'}
                       </div>
@@ -285,7 +285,7 @@ export default function SpreadsPage() {
           </div>
 
           {/* Synthesis Note */}
-          <div className="p-4 sm:p-5 rounded-xl bg-parchment-surface border border-parchment-border space-y-3">
+          <div className="p-4 sm:p-5 rounded-xl bg-white border border-parchment-border shadow-card space-y-3">
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="font-serif font-medium text-parchment-text text-sm">
@@ -308,13 +308,13 @@ export default function SpreadsPage() {
               onChange={(e) => setUserInterpretation(e.target.value)}
               placeholder="e.g. Card 1 shows... Card 2 brings the advice to... The key lesson is..."
               rows={4}
-              className="w-full p-3.5 rounded-lg bg-parchment-base border border-parchment-border focus:border-parchment-brass focus:outline-none text-xs sm:text-sm text-parchment-text placeholder-parchment-dim resize-none"
+              className="w-full p-3.5 rounded-lg bg-parchment-bg border border-parchment-border focus:border-parchment-brass focus:outline-none text-xs sm:text-sm text-parchment-text placeholder-parchment-dim resize-none"
             />
 
             <div className="flex justify-end">
               <button
                 onClick={handleSaveToJournal}
-                className="px-4 py-2 rounded-lg bg-parchment-brass hover:bg-parchment-brassHover text-parchment-base font-semibold text-xs shadow-subtle transition-colors flex items-center gap-1.5"
+                className="px-4 py-2 rounded-lg bg-parchment-brass hover:bg-parchment-brassHover text-white font-semibold text-xs shadow-soft transition-colors flex items-center gap-1.5"
               >
                 <BookMarked className="w-3.5 h-3.5" />
                 Save Reading to Journal

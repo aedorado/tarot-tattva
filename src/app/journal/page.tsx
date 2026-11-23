@@ -80,7 +80,7 @@ export default function JournalPage() {
 
         <button
           onClick={exportBackup}
-          className="px-3.5 py-1.5 rounded-lg bg-parchment-surface hover:bg-parchment-elevated border border-parchment-border text-xs font-medium text-parchment-muted hover:text-parchment-text flex items-center gap-1.5 transition-colors shadow-sm"
+          className="px-3.5 py-1.5 rounded-lg bg-white hover:bg-parchment-elevated border border-parchment-border text-xs font-medium text-parchment-muted hover:text-parchment-text flex items-center gap-1.5 transition-colors shadow-soft"
         >
           <Download className="w-3.5 h-3.5 text-parchment-brass" />
           Export Backup (JSON)
@@ -93,8 +93,8 @@ export default function JournalPage() {
           onClick={() => setActiveTab('lectures')}
           className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-colors flex items-center gap-1.5 whitespace-nowrap ${
             activeTab === 'lectures'
-              ? 'bg-parchment-brass text-parchment-base font-semibold shadow-subtle'
-              : 'text-parchment-muted hover:text-parchment-text bg-parchment-surface border border-parchment-border'
+              ? 'bg-parchment-brass text-white font-semibold shadow-soft'
+              : 'text-parchment-muted hover:text-parchment-text bg-white border border-parchment-border shadow-xs'
           }`}
         >
           <GraduationCap className="w-3.5 h-3.5" />
@@ -105,8 +105,8 @@ export default function JournalPage() {
           onClick={() => setActiveTab('notes')}
           className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-colors flex items-center gap-1.5 whitespace-nowrap ${
             activeTab === 'notes'
-              ? 'bg-parchment-brass text-parchment-base font-semibold shadow-subtle'
-              : 'text-parchment-muted hover:text-parchment-text bg-parchment-surface border border-parchment-border'
+              ? 'bg-parchment-brass text-white font-semibold shadow-soft'
+              : 'text-parchment-muted hover:text-parchment-text bg-white border border-parchment-border shadow-xs'
           }`}
         >
           <BookOpen className="w-3.5 h-3.5" />
@@ -117,8 +117,8 @@ export default function JournalPage() {
           onClick={() => setActiveTab('readings')}
           className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-colors flex items-center gap-1.5 whitespace-nowrap ${
             activeTab === 'readings'
-              ? 'bg-parchment-brass text-parchment-base font-semibold shadow-subtle'
-              : 'text-parchment-muted hover:text-parchment-text bg-parchment-surface border border-parchment-border'
+              ? 'bg-parchment-brass text-white font-semibold shadow-soft'
+              : 'text-parchment-muted hover:text-parchment-text bg-white border border-parchment-border shadow-xs'
           }`}
         >
           <Layers className="w-3.5 h-3.5" />
@@ -137,8 +137,8 @@ export default function JournalPage() {
                   onClick={() => setSelectedLectureId(lec.id)}
                   className={`px-3 py-1 rounded-md text-xs font-medium border ${
                     selectedLectureId === lec.id
-                      ? 'border-parchment-brass text-parchment-brass bg-parchment-brassMuted'
-                      : 'border-parchment-border text-parchment-muted hover:text-parchment-text bg-parchment-surface'
+                      ? 'border-parchment-brass text-parchment-brass bg-parchment-brassTint'
+                      : 'border-parchment-border text-parchment-muted hover:text-parchment-text bg-white'
                   }`}
                 >
                   {lec.title}
@@ -148,8 +148,8 @@ export default function JournalPage() {
           )}
 
           {activeLecture ? (
-            <div className="p-6 sm:p-8 rounded-xl bg-parchment-surface border border-parchment-border shadow-card text-parchment-text">
-              <article className="prose prose-invert max-w-none text-xs sm:text-sm leading-relaxed space-y-3.5">
+            <div className="p-6 sm:p-8 rounded-xl bg-white border border-parchment-border shadow-card text-parchment-text">
+              <article className="prose max-w-none text-xs sm:text-sm leading-relaxed space-y-3.5">
                 <ReactMarkdown
                   components={{
                     h1: ({ children }) => <h1 className="font-serif text-xl sm:text-2xl font-normal text-parchment-brass border-b border-parchment-border pb-3 mb-4">{children}</h1>,
@@ -158,9 +158,9 @@ export default function JournalPage() {
                     p: ({ children }) => <p className="text-parchment-muted leading-relaxed my-2">{children}</p>,
                     ul: ({ children }) => <ul className="list-disc list-inside space-y-1 text-parchment-muted my-2">{children}</ul>,
                     li: ({ children }) => <li className="text-parchment-muted">{children}</li>,
-                    strong: ({ children }) => <strong className="font-medium text-parchment-text">{children}</strong>,
+                    strong: ({ children }) => <strong className="font-semibold text-parchment-text">{children}</strong>,
                     blockquote: ({ children }) => (
-                      <blockquote className="border-l-2 border-parchment-brass bg-parchment-base p-3 rounded-r-lg my-2.5 text-parchment-muted italic">
+                      <blockquote className="border-l-2 border-parchment-brass bg-parchment-brassTint p-3 rounded-r-lg my-2.5 text-parchment-muted italic">
                         {children}
                       </blockquote>
                     ),
@@ -169,7 +169,7 @@ export default function JournalPage() {
                         <table className="w-full text-xs text-left border border-parchment-border">{children}</table>
                       </div>
                     ),
-                    th: ({ children }) => <th className="p-2 bg-parchment-base border-b border-parchment-border font-medium text-parchment-brass">{children}</th>,
+                    th: ({ children }) => <th className="p-2 bg-parchment-elevated border-b border-parchment-border font-medium text-parchment-brass">{children}</th>,
                     td: ({ children }) => <td className="p-2 border-b border-parchment-border/60 text-parchment-muted">{children}</td>,
                     hr: () => <hr className="border-parchment-border my-5" />
                   }}
@@ -190,7 +190,7 @@ export default function JournalPage() {
       {activeTab === 'notes' && (
         <div className="space-y-4">
           {cardsWithNotes.length === 0 ? (
-            <div className="text-center py-16 px-4 rounded-xl bg-parchment-surface border border-parchment-border">
+            <div className="text-center py-16 px-4 rounded-xl bg-white border border-parchment-border shadow-soft">
               <BookOpen className="w-8 h-8 text-parchment-dim mx-auto mb-2 opacity-60" />
               <h3 className="font-serif text-base text-parchment-text">No card lecture notes yet</h3>
               <p className="text-xs text-parchment-muted mt-1 mb-4">
@@ -198,7 +198,7 @@ export default function JournalPage() {
               </p>
               <Link
                 href="/"
-                className="px-3.5 py-1.5 rounded-lg bg-parchment-brass text-parchment-base font-semibold text-xs inline-block"
+                className="px-3.5 py-1.5 rounded-lg bg-parchment-brass text-white font-semibold text-xs inline-block"
               >
                 Browse Tarotpedia
               </Link>
@@ -212,9 +212,9 @@ export default function JournalPage() {
                   <div
                     key={n.cardName}
                     onClick={() => setSelectedCardForModal(card)}
-                    className="p-3.5 rounded-xl bg-parchment-surface border border-parchment-border hover:border-parchment-brass/60 cursor-pointer transition-colors shadow-card flex gap-3.5"
+                    className="p-3.5 rounded-xl bg-white border border-parchment-border hover:border-parchment-brass cursor-pointer transition-colors shadow-soft flex gap-3.5"
                   >
-                    <div className="relative w-14 h-24 rounded overflow-hidden flex-shrink-0 border border-parchment-border">
+                    <div className="relative w-14 h-24 rounded overflow-hidden flex-shrink-0 border border-parchment-border bg-[#f0ece3]">
                       <Image
                         src={`/cards/${card.img}`}
                         alt={card.name}
@@ -245,7 +245,7 @@ export default function JournalPage() {
       {activeTab === 'readings' && (
         <div className="space-y-4">
           {readings.length === 0 ? (
-            <div className="text-center py-16 px-4 rounded-xl bg-parchment-surface border border-parchment-border">
+            <div className="text-center py-16 px-4 rounded-xl bg-white border border-parchment-border shadow-soft">
               <Sparkles className="w-8 h-8 text-parchment-dim mx-auto mb-2 opacity-60" />
               <h3 className="font-serif text-base text-parchment-text">No practice readings saved yet</h3>
               <p className="text-xs text-parchment-muted mt-1 mb-4">
@@ -253,7 +253,7 @@ export default function JournalPage() {
               </p>
               <Link
                 href="/spreads"
-                className="px-3.5 py-1.5 rounded-lg bg-parchment-brass text-parchment-base font-semibold text-xs inline-block"
+                className="px-3.5 py-1.5 rounded-lg bg-parchment-brass text-white font-semibold text-xs inline-block"
               >
                 Go to Practice Spreads
               </Link>
@@ -262,7 +262,7 @@ export default function JournalPage() {
             readings.map((reading) => (
               <div
                 key={reading.id}
-                className="p-4 sm:p-5 rounded-xl bg-parchment-surface border border-parchment-border shadow-card space-y-3.5"
+                className="p-4 sm:p-5 rounded-xl bg-white border border-parchment-border shadow-soft space-y-3.5"
               >
                 <div className="flex items-start justify-between">
                   <div>
@@ -295,10 +295,10 @@ export default function JournalPage() {
                       <div
                         key={i}
                         onClick={() => cardData && setSelectedCardForModal(cardData)}
-                        className="p-2 rounded-lg bg-parchment-base border border-parchment-border flex items-center gap-2.5 cursor-pointer hover:border-parchment-brass/60 transition-colors"
+                        className="p-2 rounded-lg bg-parchment-bg border border-parchment-border flex items-center gap-2.5 cursor-pointer hover:border-parchment-brass transition-colors"
                       >
                         {cardData && (
-                          <div className="relative w-8 h-14 rounded overflow-hidden flex-shrink-0">
+                          <div className="relative w-8 h-14 rounded overflow-hidden flex-shrink-0 bg-[#f0ece3]">
                             <Image
                               src={`/cards/${cardData.img}`}
                               alt={cardData.name}
@@ -325,7 +325,7 @@ export default function JournalPage() {
 
                 {/* Interpretation */}
                 {reading.userNotes && (
-                  <div className="p-3 rounded-lg bg-parchment-base border border-parchment-border text-xs text-parchment-muted leading-relaxed whitespace-pre-wrap">
+                  <div className="p-3 rounded-lg bg-parchment-bg border border-parchment-border text-xs text-parchment-muted leading-relaxed whitespace-pre-wrap">
                     <span className="font-medium text-parchment-brass block mb-1">
                       My Interpretation Notes:
                     </span>

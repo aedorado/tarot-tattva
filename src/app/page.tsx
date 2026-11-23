@@ -6,8 +6,8 @@ import Link from 'next/link';
 export default function HomePage() {
   return (
     <div className="space-y-8">
-      {/* Editorial Header */}
-      <div className="p-6 sm:p-8 rounded-2xl bg-parchment-surface border border-parchment-border">
+      {/* Editorial Light Header */}
+      <div className="p-6 sm:p-8 rounded-2xl bg-white border border-parchment-border shadow-card">
         <div className="max-w-2xl space-y-3">
           <span className="text-[11px] font-semibold tracking-widest text-parchment-brass uppercase">
             Course Study Deck • Rider–Waite
@@ -22,14 +22,14 @@ export default function HomePage() {
           <div className="pt-2 flex flex-wrap gap-2.5">
             <Link
               href="/study"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-parchment-brass text-parchment-base font-medium text-xs shadow-subtle hover:bg-parchment-brassHover transition-colors"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-parchment-brass text-white font-medium text-xs shadow-soft hover:bg-parchment-brassHover transition-colors"
             >
               <Sparkles className="w-3.5 h-3.5" />
               Active Recall Flashcards
             </Link>
             <Link
               href="/spreads"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-parchment-elevated hover:bg-parchment-border text-parchment-text border border-parchment-border text-xs font-medium transition-colors"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-parchment-elevated hover:bg-parchment-border text-parchment-text border border-parchment-border text-xs font-medium transition-colors"
             >
               <Layers className="w-3.5 h-3.5 text-parchment-dim" />
               Practice Spreads

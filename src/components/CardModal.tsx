@@ -34,22 +34,22 @@ export default function CardModal({ card, onClose }: CardModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-xs animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/40 backdrop-blur-xs animate-fade-in">
       <div 
-        className="relative w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-2xl bg-parchment-surface border border-parchment-border shadow-card flex flex-col md:flex-row"
+        className="relative w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-2xl bg-white border border-parchment-border shadow-modal flex flex-col md:flex-row"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 z-20 p-1.5 rounded-full bg-parchment-base/80 hover:bg-parchment-base text-parchment-muted hover:text-parchment-text transition-colors border border-parchment-border"
+          className="absolute top-3 right-3 z-20 p-1.5 rounded-full bg-white/90 hover:bg-parchment-elevated text-parchment-muted hover:text-parchment-text transition-colors border border-parchment-border shadow-xs"
         >
           <X className="w-4 h-4" />
         </button>
 
         {/* Left: Card Artwork */}
-        <div className="md:w-5/12 bg-parchment-base p-6 flex flex-col items-center justify-between border-b md:border-b-0 md:border-r border-parchment-border">
-          <div className="relative w-44 h-72 sm:w-52 sm:h-88 rounded-xl overflow-hidden shadow-card border border-parchment-border my-auto">
+        <div className="md:w-5/12 bg-parchment-bg p-6 flex flex-col items-center justify-between border-b md:border-b-0 md:border-r border-parchment-border">
+          <div className="relative w-44 h-72 sm:w-52 sm:h-80 rounded-xl overflow-hidden shadow-card border border-parchment-border my-auto bg-[#f0ece3]">
             <Image
               src={`/cards/${card.img}`}
               alt={card.name}
@@ -65,15 +65,15 @@ export default function CardModal({ card, onClose }: CardModalProps) {
               {card.name}
             </h2>
             <div className="flex items-center justify-center gap-1.5 mt-1.5 text-[11px] text-parchment-dim">
-              <span className="px-2 py-0.5 rounded bg-parchment-surface border border-parchment-border">
+              <span className="px-2 py-0.5 rounded bg-white border border-parchment-border">
                 {card.arcane}
               </span>
               <span>•</span>
-              <span className="px-2 py-0.5 rounded bg-parchment-surface border border-parchment-border">
+              <span className="px-2 py-0.5 rounded bg-white border border-parchment-border">
                 Suit: {card.suit}
               </span>
               <span>•</span>
-              <span className="px-2 py-0.5 rounded bg-parchment-surface border border-parchment-border">
+              <span className="px-2 py-0.5 rounded bg-white border border-parchment-border">
                 #{card.number}
               </span>
             </div>
@@ -81,14 +81,14 @@ export default function CardModal({ card, onClose }: CardModalProps) {
         </div>
 
         {/* Right: Tabbed Study Details */}
-        <div className="md:w-7/12 flex flex-col h-full overflow-hidden bg-parchment-surface">
+        <div className="md:w-7/12 flex flex-col h-full overflow-hidden bg-white">
           {/* Tabs */}
-          <div className="flex items-center gap-1 border-b border-parchment-border px-6 pt-3 bg-parchment-surface">
+          <div className="flex items-center gap-1 border-b border-parchment-border px-6 pt-3 bg-white">
             <button
               onClick={() => setActiveTab('meanings')}
               className={`pb-2.5 px-2.5 text-xs font-medium border-b-2 transition-colors flex items-center gap-1.5 ${
                 activeTab === 'meanings'
-                  ? 'border-parchment-brass text-parchment-brass'
+                  ? 'border-parchment-brass text-parchment-brass font-semibold'
                   : 'border-transparent text-parchment-muted hover:text-parchment-text'
               }`}
             >
@@ -99,7 +99,7 @@ export default function CardModal({ card, onClose }: CardModalProps) {
               onClick={() => setActiveTab('correspondences')}
               className={`pb-2.5 px-2.5 text-xs font-medium border-b-2 transition-colors flex items-center gap-1.5 ${
                 activeTab === 'correspondences'
-                  ? 'border-parchment-brass text-parchment-brass'
+                  ? 'border-parchment-brass text-parchment-brass font-semibold'
                   : 'border-transparent text-parchment-muted hover:text-parchment-text'
               }`}
             >
@@ -110,7 +110,7 @@ export default function CardModal({ card, onClose }: CardModalProps) {
               onClick={() => setActiveTab('notes')}
               className={`pb-2.5 px-2.5 text-xs font-medium border-b-2 transition-colors flex items-center gap-1.5 ${
                 activeTab === 'notes'
-                  ? 'border-parchment-brass text-parchment-brass'
+                  ? 'border-parchment-brass text-parchment-brass font-semibold'
                   : 'border-transparent text-parchment-muted hover:text-parchment-text'
               }`}
             >
@@ -132,7 +132,7 @@ export default function CardModal({ card, onClose }: CardModalProps) {
                     {card.keywords.map((kw, i) => (
                       <span
                         key={i}
-                        className="px-2.5 py-0.5 text-xs rounded bg-parchment-base text-parchment-muted border border-parchment-border"
+                        className="px-2.5 py-0.5 text-xs rounded bg-parchment-bg text-parchment-muted border border-parchment-border"
                       >
                         {kw}
                       </span>
@@ -142,7 +142,7 @@ export default function CardModal({ card, onClose }: CardModalProps) {
 
                 {/* Divinatory / Fortune Telling */}
                 {card.fortune_telling && card.fortune_telling.length > 0 && (
-                  <div className="p-3.5 rounded-xl bg-parchment-base border border-parchment-border">
+                  <div className="p-3.5 rounded-xl bg-parchment-brassTint border border-parchment-brass/20">
                     <span className="text-[10px] uppercase font-semibold text-parchment-brass tracking-wider block mb-1.5">
                       Fortune Telling &amp; Divination
                     </span>
@@ -156,7 +156,7 @@ export default function CardModal({ card, onClose }: CardModalProps) {
 
                 {/* Light vs Shadow */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div className="p-3.5 rounded-xl bg-parchment-base border border-parchment-border">
+                  <div className="p-3.5 rounded-xl bg-parchment-bg border border-parchment-border">
                     <div className="flex items-center gap-1.5 mb-1.5 text-parchment-brass font-medium text-xs">
                       <Sun className="w-3.5 h-3.5" />
                       <span>Light (Upright)</span>
@@ -168,7 +168,7 @@ export default function CardModal({ card, onClose }: CardModalProps) {
                     </ul>
                   </div>
 
-                  <div className="p-3.5 rounded-xl bg-parchment-base border border-parchment-border">
+                  <div className="p-3.5 rounded-xl bg-parchment-bg border border-parchment-border">
                     <div className="flex items-center gap-1.5 mb-1.5 text-parchment-dim font-medium text-xs">
                       <Moon className="w-3.5 h-3.5" />
                       <span>Shadow (Reversed)</span>
@@ -183,7 +183,7 @@ export default function CardModal({ card, onClose }: CardModalProps) {
 
                 {/* Reflection Questions */}
                 {card.Questions && card.Questions.length > 0 && (
-                  <div className="p-3.5 rounded-xl bg-parchment-base border border-parchment-border">
+                  <div className="p-3.5 rounded-xl bg-parchment-bg border border-parchment-border">
                     <div className="flex items-center gap-1.5 mb-1.5 text-parchment-brass font-medium text-xs">
                       <HelpCircle className="w-3.5 h-3.5" />
                       <span>Reflection Questions</span>
@@ -202,37 +202,37 @@ export default function CardModal({ card, onClose }: CardModalProps) {
               <div className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
                   {card.Archetype && (
-                    <div className="p-3 rounded-lg bg-parchment-base border border-parchment-border">
+                    <div className="p-3 rounded-lg bg-parchment-bg border border-parchment-border">
                       <span className="text-[10px] text-parchment-dim block">Archetype</span>
                       <span className="font-medium text-parchment-text">{card.Archetype}</span>
                     </div>
                   )}
                   {card.Numerology && (
-                    <div className="p-3 rounded-lg bg-parchment-base border border-parchment-border">
+                    <div className="p-3 rounded-lg bg-parchment-bg border border-parchment-border">
                       <span className="text-[10px] text-parchment-dim block">Numerology</span>
                       <span className="font-medium text-parchment-text">{card.Numerology}</span>
                     </div>
                   )}
                   {card.Elemental && (
-                    <div className="p-3 rounded-lg bg-parchment-base border border-parchment-border">
+                    <div className="p-3 rounded-lg bg-parchment-bg border border-parchment-border">
                       <span className="text-[10px] text-parchment-dim block">Elemental</span>
                       <span className="font-medium text-parchment-text">{card.Elemental}</span>
                     </div>
                   )}
                   {card.Astrology && (
-                    <div className="p-3 rounded-lg bg-parchment-base border border-parchment-border">
+                    <div className="p-3 rounded-lg bg-parchment-bg border border-parchment-border">
                       <span className="text-[10px] text-parchment-dim block">Astrology</span>
                       <span className="font-medium text-parchment-text">{card.Astrology}</span>
                     </div>
                   )}
                   {card.HebrewAlphabet && (
-                    <div className="p-3 rounded-lg bg-parchment-base border border-parchment-border">
+                    <div className="p-3 rounded-lg bg-parchment-bg border border-parchment-border">
                       <span className="text-[10px] text-parchment-dim block">Hebrew Letter</span>
                       <span className="font-medium text-parchment-text">{card.HebrewAlphabet}</span>
                     </div>
                   )}
                   {card.Affirmation && (
-                    <div className="p-3 rounded-lg bg-parchment-base border border-parchment-border">
+                    <div className="p-3 rounded-lg bg-parchment-bg border border-parchment-border">
                       <span className="text-[10px] text-parchment-dim block">Affirmation</span>
                       <span className="font-medium italic text-parchment-brass">{card.Affirmation}</span>
                     </div>
@@ -240,7 +240,7 @@ export default function CardModal({ card, onClose }: CardModalProps) {
                 </div>
 
                 {card.MythicalSpiritual && (
-                  <div className="p-3.5 rounded-xl bg-parchment-base border border-parchment-border">
+                  <div className="p-3.5 rounded-xl bg-parchment-bg border border-parchment-border">
                     <span className="text-[10px] uppercase font-semibold text-parchment-brass tracking-wider block mb-1">
                       Mythical &amp; Spiritual Backstory
                     </span>
@@ -268,13 +268,13 @@ export default function CardModal({ card, onClose }: CardModalProps) {
                   onChange={(e) => setUserNote(e.target.value)}
                   placeholder="e.g. In lecture, the teacher highlighted this card as an indication of..."
                   rows={8}
-                  className="w-full p-3.5 rounded-xl bg-parchment-base border border-parchment-border focus:border-parchment-brass focus:outline-none text-xs sm:text-sm text-parchment-text placeholder-parchment-dim resize-none"
+                  className="w-full p-3.5 rounded-xl bg-parchment-bg border border-parchment-border focus:border-parchment-brass focus:outline-none text-xs sm:text-sm text-parchment-text placeholder-parchment-dim resize-none"
                 />
 
                 <div className="flex justify-end">
                   <button
                     onClick={handleSaveNote}
-                    className="px-4 py-2 rounded-lg bg-parchment-brass hover:bg-parchment-brassHover text-parchment-base font-semibold text-xs transition-colors shadow-subtle flex items-center gap-1.5"
+                    className="px-4 py-2 rounded-lg bg-parchment-brass hover:bg-parchment-brassHover text-white font-semibold text-xs transition-colors shadow-soft flex items-center gap-1.5"
                   >
                     <BookMarked className="w-3.5 h-3.5" />
                     Save Note
